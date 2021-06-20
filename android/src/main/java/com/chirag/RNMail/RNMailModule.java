@@ -1,6 +1,7 @@
 package com.chirag.RNMail;
 
 import android.content.Intent;
+import androidx.core.content.IntentCompat;
 import android.content.pm.PackageManager;
 import android.content.pm.ResolveInfo;
 import android.net.Uri;
@@ -67,7 +68,7 @@ public class RNMailModule extends ReactContextBaseJavaModule {
     if (options.hasKey("body") && !options.isNull("body")) {
       String body = options.getString("body");
       if (options.hasKey("isHTML") && options.getBoolean("isHTML")) {
-        i.putExtra(Intent.EXTRA_TEXT, Html.fromHtml(body));
+        i.putExtra(IntentCompat.EXTRA_HTML_TEXT, Html.fromHtml(body));
       } else {
         i.putExtra(Intent.EXTRA_TEXT, body);
       }
